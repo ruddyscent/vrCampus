@@ -1,8 +1,11 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿//
+// Raycasting can determine if an object should do something interesting when gazed at, 
+// without specifying what that interesting thing is. It's just one way to identify objects
+// we want to be able to gaze at.
+//
+
+using System;
 using UnityEngine;
-using vrCampusCourseware;
 
 public class gazeableObject : MonoBehaviour {
     public event Action OnOver;             // Called when the gaze moves over this object
