@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using vrCampusCourseware;
 
 public class gazeTimerVisual : MonoBehaviour {
     public event Action OnSelectionComplete;                                                // This event is triggered when the bar has filled.

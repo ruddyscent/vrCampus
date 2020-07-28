@@ -1,9 +1,5 @@
-﻿//
-// This script does have things to change in the Inspector;
-// Two different materials and an integer named "Setting"
-//
-
-using System.Collections;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using vrCampusCourseware;
 
@@ -12,10 +8,8 @@ public class dioAnimButton : MonoBehaviour {
     [SerializeField] private Material m_NormalMaterial;
     [SerializeField] private Material m_OverMaterial;
 
-    // The following events are assigned in the Awake function
-    private gazeableObject m_InteractiveItem; // called when the user's gaze enteres and leaves out collider.
+    private gazeableObject m_InteractiveItem;
     private gazeTimerVisual m_SelectionRadial;         // This controls when the selection is complete.
-    
     private Renderer m_Renderer;
 
     mainPlayer thePlayer;
@@ -39,7 +33,9 @@ public class dioAnimButton : MonoBehaviour {
             thePlayer = GameObject.FindObjectOfType<mainPlayer>();
             m_SelectionRadial = thePlayer.GetComponent<gazeTimerVisual>();
         }
+
     }
+
 
     private void OnEnable()
     {
@@ -48,12 +44,14 @@ public class dioAnimButton : MonoBehaviour {
         m_SelectionRadial.OnSelectionComplete += HandleSelectionComplete;
     }
 
+
     private void OnDisable()
     {
         m_InteractiveItem.OnOver -= HandleOver;
         m_InteractiveItem.OnOut -= HandleOut;
         m_SelectionRadial.OnSelectionComplete -= HandleSelectionComplete;
     }
+
 
     private void HandleSelectionComplete()
     {
@@ -78,7 +76,7 @@ public class dioAnimButton : MonoBehaviour {
         thePlayer.toggleAnim(setting);
 
         // Wait for the camera to fade out.
-        yield return null; // StartCoroutine(m_CameraFade.BeginFadeOut(true));
+        yield return null;// StartCoroutine(m_CameraFade.BeginFadeOut(true));
 
         // Load the level.
         //        SceneManager.LoadScene(m_SceneToLoad, LoadSceneMode.Single);
@@ -96,6 +94,7 @@ public class dioAnimButton : MonoBehaviour {
             m_Renderer.material = m_OverMaterial;
         }
     }
+
 
     //Handle the Out event
     private void HandleOut()
